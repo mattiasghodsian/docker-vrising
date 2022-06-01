@@ -1,80 +1,42 @@
 <p align="center">
-  <a href="https://github.com/TrueOsiris/docker-vrising">
-    <img alt="Iroh" src="assets/dockerized-vrising-dedicated-server.png?raw=true" height="250">
+  <a href="https://github.com/mattiasghodsian/dockerized-vrising-server">
+    <img alt="Dockerized V Rising dedicated server" src="assets/dockerized-vrising-dedicated-server.png?raw=true" height="250">
   </a>
-  <p  align="center">Dockerized V Rising dedicated server in an Ubuntu 22.04 container with Wine.</p>
+  <p  align="center">Dockerized V Rising dedicated server</p>
 </p>
 
 <p align="center">
-  <img alt="Trueosiris Rules" src="https://img.shields.io/badge/trueosiris-rules-f08060" />
-  <a href="https://hub.docker.com/r/trueosiris/vrising/">
-    <img alt="Docker Pulls" src="https://badgen.net/docker/pulls/trueosiris/vrising?icon=docker&label=pulls" />
+  <a href="https://github.com/mattiasghodsian/dockerized-vrising-server">
+    <img alt="Github stars" src="https://badgen.net/github/stars/mattiasghodsian/dockerized-vrising-server?icon=github&label=stars" />
   </a>
-  <a href="https://hub.docker.com/r/trueosiris/vrising/">
-    <img alt="Docker stars" src="https://badgen.net/docker/stars/trueosiris/vrising?icon=docker&label=stars" />
+  <a href="https://github.com/mattiasghodsian/dockerized-vrising-server">
+    <img alt="Github forks" src="https://badgen.net/github/forks/mattiasghodsian/dockerized-vrising-server?icon=github&label=forks" />
   </a>
-  <a href="https://hub.docker.com/r/trueosiris/vrising/">
-    <img alt="Docker stars" src="https://badgen.net/docker/size/trueosiris/vrising?icon=docker&label=image%20size" />
-  <img alt="Github stars" src="https://badgen.net/github/stars/trueosiris/docker-vrising?icon=github&label=stars" />
-  <img alt="Github forks" src="https://badgen.net/github/forks/trueosiris/docker-vrising?icon=github&label=forks" />
-  <a href="https://github.com/TrueOsiris/docker-vrising/issues/">
-    <img alt="Github issues" src="https://img.shields.io/github/issues/TrueOsiris/docker-vrising" />
+  <a href="https://github.com/mattiasghodsian/dockerized-vrising-server/issues/">
+    <img alt="Github issues" src="https://img.shields.io/github/issues/mattiasghodsian/dockerized-vrising-server" />
   </a>
-  <img alt="Github last-commit" src="https://img.shields.io/github/last-commit/TrueOsiris/docker-vrising" />
+  <img alt="Github last-commit" src="https://img.shields.io/github/last-commit/mattiasghodsian/dockerized-vrising-server" />
 </p>
 
-Edit `ServerHostSettings.json` if you want to change the ports, descriptions etc.<br>
-Server config files are in `/path/on/host/dedicatedserverfiles/VRisingServer_Data/StreamingAssets/Settings`.
-
-## Environment variables
-
-| Variable | Type | Default | Description |
-| -------------------- | ---------------------------- |  ---------------------------- | ------------------------------------------------------------------------------- |
-| TZ | `string` |   | Timezone for ntpdate `Europe/Paris` |
-| SERVERNAME | `string` | trueosiris-V | Mandatory setting that overrules the ServerHostSettings.json entry |
-| WORLDNAME | `string` | world1 | Optional: No real need to alter this. saves will be in a subdir WORLDNAME |
-| AUTO_BACKUP | `boolean` | 0 | Enables auto backup task, backups older then 1 day will be removed |
-| AUTO_BACKUP_SCHEDULE | `*/15 * * * *` | 30min | Set interval for each save |
-
-## Ports
-
-| Exposed Container port | Type | Default |
-| ---------------------- | ---- | ------- |
-| 9876 | UDP | ✔️ |
-| 9877 | UDP | ✔️ |
-
-## Volumes
-
-| Volume                    | Container path                                                   | Description |
-| ------------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| steam install path    | /mnt/vrising/server | path to hold the dedicated server files |
-| world | /mnt/vrising/persistentdata | path that holds the world files |
 
 
-## Docker cli
-```terminal
-docker run -d --name='vrising' \
---net='bridge' \
--e TZ="Europe/Paris" \
--e SERVERNAME="trueosiris-V" \
--v '/path/on/host/dedicatedserverfiles':'/mnt/vrising/server':'rw' \
--v '/path/on/host/persistentdata':'/mnt/vrising/persistentdata':'rw' \
--p 9876:9876/udp \
--p 9877:9877/udp \
-'trueosiris/vrising'
-```
+## Overview
+Dockerized V Rising dedicated server on Ubuntu 22.04 with Wine and extra features based on `TrueOsiris/docker-vrising`.
+## Features
+- Set a schedule to run backups automatically.
+## Usage
+Save below as `docker-compose.yml` and run `docker-compose up -d` in the same directory.
 
-## docker-compose.yml
 ```
 version: '3.3'
 services:
   vrising:
+    build: .
     container_name: vrising
-    image: trueosiris/vrising
     network_mode: bridge
     environment:
-      - TZ=Europe/Paris
-      - SERVERNAME=vrisingDocker
+      - TZ=Europe/Stockholm
+      - SERVERNAME=Dockerized VRising
       - AUTO_BACKUP=1
     volumes:
       - './server:/mnt/vrising/server:rw'
@@ -84,13 +46,29 @@ services:
       - '9877:9877/udp'
 ```
 
-## Links
+## Environment Variables
+A set of environment variables have default values provided as part of the image. 
 
-- [V Rising Dedicated Server Instructions](https://github.com/StunlockStudios/vrising-dedicated-server-instructions)
-- [Dockerhub - Trueosiris/vrising](https://hub.docker.com/repository/docker/trueosiris/vrising)
-- [Github - trueosiris/vrising](https://github.com/TrueOsiris/docker-vrising)
+| Variable | Value | Required | Description |
+| - | - | - | - |
+| TZ | `Europe/Stockholm` | ✔️ | Sets machines timezone |
+| SERVERNAME | `Dockerized VRising` | ❌ |  Sets the server name and also ignores what's been in `ServerHostSettings.json`  |
+| WORLDNAME | `world1` | ❌ |  Default: `world1` |
+| AUTO_BACKUP | `1` | ❌ | Enables auto backup task, backups older then 1 day will be removed <br>Default: `0` |
+| AUTO_BACKUP_SCHEDULE | `*/15 * * * *` | ❌ |  Default: `*/30 * * * *` |
 
-## RCON <small>- Optional</small>
+*Edit `ServerHostSettings.json` for remaining options.*
+## Ports
+The server default ports are `9876` and `9876`, can be altered in `ServerHostSettings.json` (Don't forget to change exposed ports on your container). **Don't forget to port forward on your router.**
+
+## Volumes
+
+| Volume | Container path | Description |
+| - | - | - |
+| server | /mnt/vrising/server | Holds the server files |
+| data | /mnt/vrising/persistentdata | Holds `world`, `backup` directories |
+
+## RCON - Optional
 To enable RCON edit `ServerHostSettings.json` and paste following lines after `QueryPort`. To communicate using RCON protocal use the [RCON CLI](https://github.com/gorcon/rcon-cli) by gorcon.
 
 ```json
@@ -101,36 +79,7 @@ To enable RCON edit `ServerHostSettings.json` and paste following lines after `Q
 },
 ```
 
-## Contributors
-<a href="https://github.com/TrueOsiris/docker-vrising/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TrueOsiris/docker-vrising" />
-</a>
+## FAQ
 
-## Remarks 
-### as requested or logged in issues
-
-- Configuration settings are still those in /path/on/host/dedicatedserverfiles/VRisingServer_Data/StreamingAssets/Settings
-so NOT those in /persistentdata.
-
-
-- If you use different internal & external ports, you can only use direct connect. For example `-p 12345:6789/udp` container port 6789 as defined in ServerHostSettings.json, and exposed as 12345 will make your server invisible, even if  `"ListOnMasterServer=true"`
-
-
-- If you want to see the server in the server list and want to use 27015-27016/UDP, you'll need to change the ports in the ServerHostSettings.json file to 27015 and 27016. Then expose these ports (below). Of course, forward these udp ports on your firewall from incoming wan to the ports on the internal ip of your dockerhost.<br>
-1. Start the container & let the server install<br>It ends with something like `0024:fixme:ntdll:EtwEventSetInformation (deadbeef, 2, 000014B2D39FA170, 65) stub`
-2. Stop the container.<br>
-3. Alter the ports in `/path/on/host/dedicatedserverfiles/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json` to<br>
-```
- "Port": 27015,
- "QueryPort": 27016,
-``` 
-4. On your firewall, port forward incoming wan udp ports 27015 and 27016 to the same udp ports on your dockerhost ip.<br>
-5. Restart the container with these ports:
-```
--p 27015:27015/udp
--p 27016:27016/udp
-```
-
-
-- If you want to continue from your local game, stop the container, overwrite the persistentdata
-contents with your local data, and relaunch the server.
+**Q:** How do i list my server ingame ? <br>
+**A:** Set `"ListOnMasterServer"` to **true** in `ServerHostSettings.json`

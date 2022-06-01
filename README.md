@@ -57,7 +57,7 @@ A set of environment variables have default values provided as part of the image
 | AUTO_BACKUP | `1` | ❌ | Enables auto backup task, backups older then 1 day will be removed <br>Default: `0` |
 | AUTO_BACKUP_SCHEDULE | `*/15 * * * *` | ❌ |  Default: `*/30 * * * *` |
 
-*Edit `ServerHostSettings.json` for remaining options.*
+*Edit `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json` for remaining options.*
 ## Ports
 The server default ports are `9876` and `9876`, can be altered in `ServerHostSettings.json` (Don't forget to change exposed ports on your container). **Don't forget to port forward on your router.**
 
@@ -82,4 +82,4 @@ To enable RCON edit `ServerHostSettings.json` and paste following lines after `Q
 ## FAQ
 
 **Q:** How do i list my server ingame ? <br>
-**A:** Set `"ListOnMasterServer"` to **true** in `ServerHostSettings.json`
+**A:** Set `"ListOnMasterServer"` to **true** in `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json`

@@ -34,7 +34,7 @@ if [ -z $AUTO_BACKUP ]; then
 fi
 
 if [ -z "$AUTO_BACKUP_SCHEDULE" ]; then
-	AUTO_BACKUP_SCHEDULE="*/30 * * * *"
+	AUTO_BACKUP_SCHEDULE="0 */3 * * *"
 fi
 
 if [ $AUTO_BACKUP -eq 1 ]; then

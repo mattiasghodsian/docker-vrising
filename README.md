@@ -44,6 +44,7 @@ services:
     ports:
       - '9876:9876/udp'
       - '9877:9877/udp'
+    restart: unless-stopped
 ```
 
 ## Environment Variables

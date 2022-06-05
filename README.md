@@ -56,7 +56,7 @@ A set of environment variables have default values provided as part of the image
 | SERVERNAME | `Dockerized VRising` | ❌ |  Sets the server name and also ignores what's been in `ServerHostSettings.json`  |
 | WORLDNAME | `world1` | ❌ |  Default: `world1` |
 | AUTO_BACKUP | `1` | ❌ | Enables auto backup task, backups older then 1 day will be removed <br>Default: `0` |
-| AUTO_BACKUP_SCHEDULE | `*/15 * * * *` | ❌ |  Default: `*/30 * * * *` |
+| AUTO_BACKUP_SCHEDULE | `0 */1 * * *` | ❌ |  Default: `0 */3 * * *` |
 
 *Edit `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json` for remaining options.*
 ## Ports

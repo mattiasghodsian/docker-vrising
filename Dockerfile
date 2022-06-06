@@ -32,11 +32,11 @@ RUN rm -rf /var/lib/apt/lists/* && \
     apt autoremove -y 
 
 # Copy scripts 
-COPY scripts/start.sh /home/steam/start.sh
+COPY scripts/entrypoint.sh /home/steam/entrypoint.sh
 COPY scripts/auto_backup.sh /home/steam/auto_backup.sh
 
 # Set permissions
-RUN chmod +x /home/steam/start.sh && \
+RUN chmod +x /home/steam/entrypoint.sh && \
     chmod +x /home/steam/auto_backup.sh
 
-CMD ["/bin/bash", "/home/steam/start.sh"]
+ENTRYPOINT ["/home/steam/entrypoint.sh"]

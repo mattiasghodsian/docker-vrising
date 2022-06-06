@@ -1,6 +1,8 @@
 FROM ubuntu:22.04 
 USER root
-LABEL maintainer="Tim Chaubet"
+LABEL maintainer="Mattias Ghodsian"
+LABEL website="https://github.com/mattiasghodsian/dockerized-vrising-server"
+LABEL desc="Dockerized V Rising dedicated server"
 VOLUME ["/mnt/vrising/server", "/mnt/vrising/persistentdata"]
 
 ARG DEBIAN_FRONTEND="noninteractive"

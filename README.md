@@ -32,7 +32,7 @@ Save below as `docker-compose.yml` and run `docker-compose up -d` in the same di
 version: '3.3'
 services:
   vrising:
-    build: .
+    image: rakma/dockerized-vrising-server
     container_name: vrising
     network_mode: bridge
     environment:

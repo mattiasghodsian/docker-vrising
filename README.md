@@ -6,19 +6,20 @@
 </p>
 
 <p align="center">
+  <a href="https://hub.docker.com/r/rakma/dockerized-vrising-server">
+    <img alt="Github stars" src="https://badgen.net/docker/stars/rakma/dockerized-vrising-server?icon=docker&label=stars" />
+  </a>
+  <a href="https://hub.docker.com/r/rakma/dockerized-vrising-server">
+    <img alt="Github stars" src="https://badgen.net/docker/pulls/rakma/dockerized-vrising-server?icon=docker&label=pulls" />
+  </a>
   <a href="https://github.com/mattiasghodsian/dockerized-vrising-server">
     <img alt="Github stars" src="https://badgen.net/github/stars/mattiasghodsian/dockerized-vrising-server?icon=github&label=stars" />
   </a>
   <a href="https://github.com/mattiasghodsian/dockerized-vrising-server">
     <img alt="Github forks" src="https://badgen.net/github/forks/mattiasghodsian/dockerized-vrising-server?icon=github&label=forks" />
   </a>
-  <a href="https://github.com/mattiasghodsian/dockerized-vrising-server/issues/">
-    <img alt="Github issues" src="https://img.shields.io/github/issues/mattiasghodsian/dockerized-vrising-server" />
-  </a>
   <img alt="Github last-commit" src="https://img.shields.io/github/last-commit/mattiasghodsian/dockerized-vrising-server" />
 </p>
-
-
 
 ## Overview
 Dockerized V Rising dedicated server on Ubuntu 22.04 with Wine and extra features based on `TrueOsiris/docker-vrising`.

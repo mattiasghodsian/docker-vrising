@@ -56,7 +56,7 @@ discordMsg(){
 }
 
 cleanup() {
-	discordMsg "Server shutting down..."
+	discordMsg "Shutting down ${SERVERNAME} server..."
 	trap - SIGINT SIGTERM # clear the trap
 	kill -- -$$ # Sends SIGTERM to child/sub processes
 }

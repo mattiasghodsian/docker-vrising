@@ -11,6 +11,7 @@ RUN apt update -y && \
     apt-get install -y  apt-utils && \
     apt-get install -y  software-properties-common && \
     apt-get install -y  cron && \
+    apt-get install -y  curl && \
     add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt update -y && \

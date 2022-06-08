@@ -63,7 +63,7 @@ A set of environment variables have default values provided as part of the image
 
 *Edit `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json` for remaining options.*
 ## Ports
-The server default ports are `9876` and `9876`, can be altered in `ServerHostSettings.json` (Don't forget to change exposed ports on your container). **Don't forget to port forward on your router.**
+The server default ports are `9876` and `9876`, can be altered in `ServerHostSettings.json` (Don't forget to change exposed ports on your container). **Don't forget to port forward on your ports on your router.**
 
 ## Volumes
 
@@ -73,7 +73,7 @@ The server default ports are `9876` and `9876`, can be altered in `ServerHostSet
 | data | /mnt/vrising/persistentdata | Holds `world`, `backup` directories |
 
 ## RCON - Optional
-To enable RCON edit `ServerHostSettings.json` and paste following lines after `QueryPort`. To communicate using RCON protocal use the [RCON CLI](https://github.com/gorcon/rcon-cli) by gorcon.
+To enable RCON edit below lines in `ServerHostSettings.json`. To communicate using RCON protocal use the [RCON CLI](https://github.com/gorcon/rcon-cli) by gorcon.
 
 ```json
 "Rcon": {
@@ -86,4 +86,4 @@ To enable RCON edit `ServerHostSettings.json` and paste following lines after `Q
 ## FAQ
 
 **Q:** How do i list my server ingame ? <br>
-**A:** Set `"ListOnMasterServer"` to **true** in `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json`
+**A:** Set `"ListOnMasterServer"` to **true** in `server/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json`. **Don't forget to port forward on your ports on your router.**
